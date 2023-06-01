@@ -2,14 +2,11 @@ package com.example.student.model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
 import org.springframework.data.annotation.Id;
 
-public class Notes {
+public class Matiere {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    @ManyToOne
-    private Matiere matiere;
-    private Double note;
+    private String label;
 }
