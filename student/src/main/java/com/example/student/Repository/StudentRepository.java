@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    public Student findByCodeM(String CodeM);
+    public Student findByCodeM(String codeM);
     public List<Student> findByClassesName(String name);
 }

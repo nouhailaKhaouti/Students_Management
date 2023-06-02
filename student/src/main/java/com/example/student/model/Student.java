@@ -12,7 +12,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String CodeM;
+    private String codeM;
     private String firstName;
     private String lastName;
     @ManyToOne
