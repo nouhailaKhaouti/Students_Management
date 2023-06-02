@@ -1,10 +1,10 @@
 package com.example.student.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 
+@Entity
+@Data
 public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

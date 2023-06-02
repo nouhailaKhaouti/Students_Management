@@ -1,7 +1,6 @@
 package com.example.student.model;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -10,14 +9,7 @@ import java.util.List;
 @Data
 public class Classes {
     @Id
-    @SequenceGenerator(
-            name = "student-sequence",
-            sequenceName = "student-sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "student-sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private String name;
     private Integer numberS;

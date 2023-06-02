@@ -9,5 +9,4 @@ public interface StudentService {
     Student update(Student student) throws Exception;
     Student findByCodeM(String CodeM) throws Exception;
     List<Student> findAll();
-    //int allocate(String CodeM, String ) throws Exception;
 }
