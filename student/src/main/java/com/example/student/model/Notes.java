@@ -12,4 +12,6 @@ public class Notes {
     @ManyToOne
     private Matiere matiere;
     private Double note;
+    @ManyToOne
+    private Student student;
 }
