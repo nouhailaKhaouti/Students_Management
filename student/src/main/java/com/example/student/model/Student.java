@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Student {
@@ -16,6 +18,6 @@ public class Student {
     private String lastName;
     @ManyToOne
     private Classes classes;
-    @OneToMany
-    private Notes notes;
+    @OneToMany(mappedBy = "student")
+    private List<Notes> notes;
 }
