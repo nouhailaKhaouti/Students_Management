@@ -21,6 +21,7 @@ public class StudentController {
     // create new student
     @PostMapping("/")
     public ResponseEntity<?> create(@RequestBody(required = false) Student student) throws Exception {
+        System.out.println("Student save here .... ");
         if(student == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student is null");
         Student savedStudent = studentService.create(student);
