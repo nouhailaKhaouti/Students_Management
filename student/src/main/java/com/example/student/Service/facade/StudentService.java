@@ -9,4 +9,5 @@ public interface StudentService {
     Student update(Student student) throws Exception;
     Student findByCodeM(String CodeM) throws Exception;
     List<Student> findAll();
+    Student findByIdWithClasses(Long id) throws Exception;
 }

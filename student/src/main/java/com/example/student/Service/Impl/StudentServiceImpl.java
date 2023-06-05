@@ -53,4 +53,10 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findAll();
     }
 
+    @Override
+    public Student findByIdWithClasses(Long id) throws StudentNotFoundException {
+        return studentRepository.findByIdWithClasses(id)
+                .orElseThrow(() -> new StudentNotFoundException("Student not found"));
+    }
+
 }
