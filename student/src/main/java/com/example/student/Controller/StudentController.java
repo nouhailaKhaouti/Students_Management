@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("holiday/student")
+@RequestMapping("/student")
 @AllArgsConstructor
 @Slf4j
 public class StudentController {

@@ -1,6 +1,7 @@
 package com.example.student.model;
 
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,6 +18,4 @@ public class Student {
     private String lastName;
     @ManyToOne
     private Classes classes;
-    @OneToMany(mappedBy = "student")
-    private List<Notes> notes;
 }
