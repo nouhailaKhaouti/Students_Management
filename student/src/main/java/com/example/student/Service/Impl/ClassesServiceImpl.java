@@ -5,10 +5,11 @@ import com.example.student.Service.facade.ClassesService;
 import com.example.student.exception.Classes.ClassesExistException;
 import com.example.student.exception.Classes.ClassesNotFoundException;
 import com.example.student.model.Classes;
+import com.example.student.model.Student;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 @org.springframework.stereotype.Service
 @AllArgsConstructor
@@ -25,19 +26,18 @@ public class ClassesServiceImpl implements ClassesService {
     }
 
     @Override
-    public Classes update(Classes student) throws Exception {
+    public Classes update(Classes classes) throws Exception {
         // check if Classes exists
-        Classes studentFromDB = classesService.findByName(student.getName());
-        if (studentFromDB == null) {
-            throw new ClassesExistException(student.getName());
+        Classes classesFromDB = classesService.findByName(classes.getName());
+        if (classesFromDB == null) {
+            throw new ClassesNotFoundException(classes.getName());
         }
-        // set and save employee if not
-        return classesService.save(student);// return saved employee
+        return classesService.save(classes);
     }
 
     @Override
     public Classes findByName(String Name) throws Exception{
-        // check if employee exists
+
         Classes studentFromDB = classesService.findByName(Name);
         if(studentFromDB == null){
             throw new ClassesNotFoundException(Name);
@@ -48,5 +48,10 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     public List<Classes> findAll() {
         return classesService.findAll();
+    }
+
+    @Override
+    public Optional<Classes> classesbyId(Long id){
+        return classesService.findById(id);
     }
 }

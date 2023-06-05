@@ -1,5 +1,6 @@
 package com.example.student.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.annotation.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +24,6 @@ public class Classes {
     @NonNull
     private Integer numberS;
     private double averageC;
-    @OneToMany(mappedBy = "classes")
-    @Nullable
-    private List<Student> students;
+
 }
+

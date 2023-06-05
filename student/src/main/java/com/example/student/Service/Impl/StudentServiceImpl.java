@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -34,10 +35,13 @@ public class StudentServiceImpl implements StudentService {
         if (studentFromDB == null) {
             throw new StudentExistException(student.getCodeM());
         }
-        // set and save employee if not
-        return studentRepository.save(student);// return saved employee
-    }
 
+        studentFromDB.setFirstName(student.getFirstName());
+        studentFromDB.setLastName(student.getLastName());
+
+        // Save the updated student object
+        return studentRepository.save(studentFromDB);
+    }
     @Override
     public Student findByCodeM(String CodeM) throws Exception{
         // check if employee exists
@@ -59,4 +63,18 @@ public class StudentServiceImpl implements StudentService {
                 .orElseThrow(() -> new StudentNotFoundException("Student not found"));
     }
 
+    @Override
+    public Boolean DeleteStudent(Long id){
+        Optional<Student> studentO = studentRepository.findById(id);
+
+        if (studentO.isPresent()) {
+            Student student = studentO.get();
+            studentRepository.delete(student);
+            return true;
+        } else {
+            System.out.println("Student Not Found");
+            return false;
+        }
+
+    }
 }

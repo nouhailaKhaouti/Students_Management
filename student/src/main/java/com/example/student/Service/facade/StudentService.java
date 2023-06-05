@@ -10,4 +10,6 @@ public interface StudentService {
     Student findByCodeM(String CodeM) throws Exception;
     List<Student> findAll();
     Student findByIdWithClasses(Long id) throws Exception;
+
+    Boolean DeleteStudent(Long id) throws Exception;
 }

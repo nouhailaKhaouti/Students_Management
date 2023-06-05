@@ -4,18 +4,16 @@ import com.example.student.Dto.StudentDto;
 import com.example.student.model.Student;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
+import org.springframework.stereotype.Component;
 
-public class StudentConvert extends AbstractConverter<Student, StudentDto>{
-    final ModelMapper mapper;
+@Component
+public class StudentConvert extends AbstractConverter<Student, StudentDto> {
+    private final ModelMapper mapper;
 
-    public StudentConverter(ModelMapper mapper) {
+    public StudentConvert(ModelMapper mapper) {
         mapper.getConfiguration()
                 .setFieldMatchingEnabled(true)
                 .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
-        this.mapper = mapper;
-    }
-
-    public StudentConvert(ModelMapper mapper) {
         this.mapper = mapper;
     }
 

@@ -24,15 +24,13 @@ public class StudentController {
     final ClassesService classesService;
     final StudentConvert studentConvert;
     // create new student
-    @PostMapping("/")
-    public ResponseEntity<?> create(@RequestBody(required = false) StudentDto studentDTO) throws Exception {
-        System.out.println("Student save here .... ");
-        if(studentDTO == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student is null");
-        Student student = studentConvert.convertDtoToEntity(studentDTO);
-        Student savedStudent = studentService.update(student);
-        StudentDto studentS = studentConvert.convertEntityToDto(savedStudent);
-        return ResponseEntity.status(HttpStatus.CREATED).body(studentS);
+    @PostMapping("/saveStudent")
+    public ResponseEntity<?> create(@RequestBody Student student) throws Exception {
+        if (student == null ) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid student data");
+        }
+        Student savedStudent = studentService.create(student);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedStudent);
     }
 
     @GetMapping("/{CodeM}")
@@ -43,18 +41,25 @@ public class StudentController {
     }
 
     @PutMapping("/{CodeM}")
-    public ResponseEntity<?> update(@PathVariable String CodeM, @RequestBody StudentDto studentDTO) throws Exception{
-        if(studentDTO == null){
+    public ResponseEntity<?> update(@PathVariable String CodeM, @RequestBody Student student) throws Exception{
+        if(student == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student is null");
         }
-        Student student = studentConvert.convertDtoToEntity(studentDTO);
         Student savedStudent = studentService.update(student);
-        StudentDto studentS = studentConvert.convertEntityToDto(savedStudent);
-        return ResponseEntity.status(HttpStatus.OK).body(studentS);
+        return ResponseEntity.status(HttpStatus.OK).body(savedStudent);
     }
 
     @GetMapping("/")
     public List<Student> findAll() {
         return studentService.findAll();
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public String DeleteS(@PathVariable Long id) throws Exception {
+        if(studentService.DeleteStudent(id)){
+            return "Student deleted successfully";
+        } else {
+            return "Student not found";
+        }
     }
 }
