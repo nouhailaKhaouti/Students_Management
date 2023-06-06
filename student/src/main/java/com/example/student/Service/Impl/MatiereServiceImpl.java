@@ -16,7 +16,7 @@ public class MatiereServiceImpl implements MatiereService {
     final MatiereRepository matiereService;
     @Override
     public Matiere create(Matiere matiere) throws Exception{
-        Matiere matiereComingFromDB = matiereService.findByName(matiere.getLabel());
+        Matiere matiereComingFromDB = matiereService.findByLabel(matiere.getLabel());
         if(matiereComingFromDB != null){
             throw new MatiereExistException(matiere.getLabel());
         }
@@ -26,7 +26,7 @@ public class MatiereServiceImpl implements MatiereService {
     @Override
     public Matiere update(Matiere matiere) throws Exception {
         // check if Matiere exists
-        Matiere matiereFromDB = matiereService.findByName(matiere.getLabel());
+        Matiere matiereFromDB = matiereService.findByLabel(matiere.getLabel());
         if (matiereFromDB == null) {
             try {
                 throw new MatiereNotFoundException(matiere.getLabel());
@@ -40,7 +40,7 @@ public class MatiereServiceImpl implements MatiereService {
     @Override
     public Matiere findByName(String Name) throws Exception{
 
-        Matiere matiereFromDB = matiereService.findByName(Name);
+        Matiere matiereFromDB = matiereService.findByLabel(Name);
         if(matiereFromDB == null){
             try {
                 throw new MatiereNotFoundException(Name);
@@ -48,7 +48,7 @@ public class MatiereServiceImpl implements MatiereService {
                 throw new RuntimeException(e);
             }
         }
-        return matiereService.findByName(Name);
+        return matiereService.findByLabel(Name);
     }
 
     @Override

@@ -5,5 +5,5 @@ import com.example.student.model.Matiere;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MatiereRepository extends JpaRepository<Matiere, Long> {
-    Matiere findByName(String name);
+    Matiere findByLabel(String label);
 }
