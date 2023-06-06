@@ -58,6 +58,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<Student> findByClassesName(String Name) {
+        return studentRepository.findByClassesName(Name);
+    }
+
+    @Override
     public Student findByIdWithClasses(Long id) throws StudentNotFoundException {
         return studentRepository.findByIdWithClasses(id)
                 .orElseThrow(() -> new StudentNotFoundException("Student not found"));

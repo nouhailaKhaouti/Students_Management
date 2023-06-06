@@ -54,6 +54,11 @@ public class StudentController {
         return studentService.findAll();
     }
 
+    @GetMapping("/Name")
+    public List<Student> findByClassesName(@PathVariable String Name) throws Exception {
+        return studentService.findByClassesName(Name);
+    }
+
     @DeleteMapping(value = "/{id}")
     public String DeleteS(@PathVariable Long id) throws Exception {
         if(studentService.DeleteStudent(id)){
