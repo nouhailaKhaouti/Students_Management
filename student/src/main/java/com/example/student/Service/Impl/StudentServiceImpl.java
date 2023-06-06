@@ -35,16 +35,14 @@ public class StudentServiceImpl implements StudentService {
         if (studentFromDB == null) {
             throw new StudentExistException(student.getCodeM());
         }
-
         studentFromDB.setFirstName(student.getFirstName());
         studentFromDB.setLastName(student.getLastName());
-
         // Save the updated student object
         return studentRepository.save(studentFromDB);
     }
     @Override
     public Student findByCodeM(String CodeM) throws Exception{
-        // check if employee exists
+        // check if student exists
         Student studentFromDB = studentRepository.findByCodeM(CodeM);
         if(studentFromDB == null){
             throw new StudentNotFoundException(CodeM);
@@ -63,9 +61,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student findByIdWithClasses(Long id) throws StudentNotFoundException {
-        return studentRepository.findByIdWithClasses(id)
-                .orElseThrow(() -> new StudentNotFoundException("Student not found"));
+    public Optional<Student> findStudentByIdWithNotes(Long id) {
+        return studentRepository.findStudentByIdWithNotes(id);
     }
 
     @Override

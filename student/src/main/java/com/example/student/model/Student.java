@@ -24,4 +24,7 @@ public class Student {
     private String lastName;
     @ManyToOne
     private Classes classes;
+    @OneToMany(mappedBy = "student")
+    @JsonIgnore
+    private List<Notes> notes;
 }

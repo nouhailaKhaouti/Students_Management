@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -48,6 +49,16 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.OK).body(savedStudent);
     }
 
+    @GetMapping("/All/{id}")
+    public ResponseEntity<?> getStudentWithNotes(@PathVariable Long id) throws Exception {
+        Optional<Student> studentOptional = studentService.findStudentByIdWithNotes(id);
+        if (studentOptional.isPresent()) {
+            Student student = studentOptional.get();
+            return ResponseEntity.ok(student);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
     @GetMapping("/")
     public List<Student> findAll() {
         return studentService.findAll();

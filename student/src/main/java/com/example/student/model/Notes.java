@@ -17,5 +17,6 @@ public class Notes {
     private Matiere matiere;
     private Double note;
     @ManyToOne
+    @JoinColumn(name = "student_id")
     private Student student;
 }
