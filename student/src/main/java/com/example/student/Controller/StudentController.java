@@ -34,10 +34,9 @@ public class StudentController {
     }
 
     @GetMapping("/{CodeM}")
-    public StudentDto findByCodeM(@PathVariable String CodeM) throws Exception{
+    public Student findByCodeM(@PathVariable String CodeM) throws Exception{
         Student student =studentService.findByCodeM(CodeM);
-        StudentDto studentS = studentConvert.convertEntityToDto(student);
-        return studentS;
+        return student;
     }
 
     @PutMapping("/{CodeM}")
@@ -54,7 +53,7 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    @GetMapping("/Name")
+    @GetMapping("/Name/{Name}")
     public List<Student> findByClassesName(@PathVariable String Name) throws Exception {
         return studentService.findByClassesName(Name);
     }

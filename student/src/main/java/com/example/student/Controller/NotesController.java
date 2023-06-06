@@ -13,11 +13,7 @@ import java.util.Optional;
 @RequestMapping("/Notes")
 @AllArgsConstructor
 public class NotesController {
-
-
-
     final NotesService notesService;
-
     // create new notes
     @PostMapping(value = "/Add")
     public ResponseEntity<?> create(@RequestBody(required = false) Notes notes) throws Exception {
@@ -26,7 +22,6 @@ public class NotesController {
         Notes savedNotes = notesService.create(notes);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedNotes);
     }
-
     @GetMapping("/{Id}")
     public Optional<Notes> findById(@PathVariable Long Id) throws Exception{
         return notesService.findById(Id);
@@ -47,5 +42,15 @@ public class NotesController {
     @GetMapping("/")
     public List<Notes> findAll() {
         return notesService.findAll();
+    }
+
+    @GetMapping("/Student/{CodeM}")
+    public List<Notes> findByStudentCodeM(String CodeM) throws Exception{
+        return notesService.findByStudentCodeM(CodeM);
+    }
+
+    @GetMapping("/Matiere/{Name}")
+    public List<Notes> findByMatiereLabel(String Name) throws Exception{
+        return notesService.findByMatiereLabel(Name);
     }
 }

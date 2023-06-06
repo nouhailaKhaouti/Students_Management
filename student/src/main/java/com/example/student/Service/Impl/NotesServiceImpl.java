@@ -18,7 +18,7 @@ public class NotesServiceImpl implements NotesService {
     @Override
     public Notes create(Notes notes) throws Exception{
         Optional<Notes> notesComingFromDB = notesService.findById(notes.getId());
-        if(notesComingFromDB != null){
+        if(notesComingFromDB .isPresent()){
             throw new NotesExistException(notes.getId());
         }
         return notesService.save(notes);

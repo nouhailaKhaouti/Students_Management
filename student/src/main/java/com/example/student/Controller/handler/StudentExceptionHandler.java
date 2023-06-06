@@ -21,7 +21,7 @@ public class StudentExceptionHandler {
     }
 
     @ExceptionHandler(value = StudentExistException.class)
-    public ResponseEntity<?> handleStudentExistsException(StudentExistException exception) {
+    public ResponseEntity<?> handleStudentExistException(StudentExistException exception) {
         return ResponseEntity.status(400).body("Student with Code Massar: " + exception.getCodeM() + " is already existing");
     }
 
