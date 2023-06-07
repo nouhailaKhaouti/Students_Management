@@ -1,7 +1,7 @@
 package com.example.student.Controller.handler;
 
-import com.example.student.exception.Notes.NotesExistException;
-import com.example.student.exception.Notes.NotesNotFoundException;
+import com.example.student.Controller.exception.Notes.NotesExistException;
+import com.example.student.Controller.exception.Notes.NotesNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

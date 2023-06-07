@@ -5,17 +5,15 @@ import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @Data
 public class StudentDto {
     @NotNull
-    private Long id;
-
-    @NotNull
     private String CodeM;
 
-   // @NotBlank(message = "First name must be filled")
+   @NotBlank(message = "First name must be filled")
     private String firstName;
 
     private String lastName;

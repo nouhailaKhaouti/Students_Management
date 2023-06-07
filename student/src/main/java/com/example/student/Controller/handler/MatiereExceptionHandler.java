@@ -1,7 +1,7 @@
 package com.example.student.Controller.handler;
 
-import com.example.student.exception.Matiere.MatiereExistException;
-import com.example.student.exception.Matiere.MatiereNotFoundException;
+import com.example.student.Controller.exception.Matiere.MatiereExistException;
+import com.example.student.Controller.exception.Matiere.MatiereNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

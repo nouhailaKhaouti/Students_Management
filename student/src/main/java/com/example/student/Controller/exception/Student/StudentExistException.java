@@ -1,4 +1,4 @@
-package com.example.student.exception.Student;
+package com.example.student.Controller.exception.Student;
 
 public class StudentExistException extends Exception{
 

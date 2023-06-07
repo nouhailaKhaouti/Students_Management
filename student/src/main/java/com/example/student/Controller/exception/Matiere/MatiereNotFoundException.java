@@ -1,8 +1,8 @@
-package com.example.student.exception.Matiere;
+package com.example.student.Controller.exception.Matiere;
 
-public class MatiereExistException extends Exception {
+public class MatiereNotFoundException extends Throwable {
     String name;
-    public MatiereExistException(String name){
+    public MatiereNotFoundException(String name){
         this.name=name;
     }
 

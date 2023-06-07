@@ -1,4 +1,4 @@
-package com.example.student.exception.Notes;
+package com.example.student.Controller.exception.Notes;
 
 public class NotesExistException extends Exception {
     Long id;

@@ -1,6 +1,7 @@
 package com.example.student.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.annotation.Nullable;
@@ -23,8 +24,10 @@ public class Student {
     private String firstName;
     private String lastName;
     @ManyToOne
+    @JoinColumn(name = "classes_id")
+    @JsonBackReference
     private Classes classes;
     @OneToMany(mappedBy = "student")
-    @JsonIgnore
+    @JsonManagedReference
     private List<Notes> notes;
 }

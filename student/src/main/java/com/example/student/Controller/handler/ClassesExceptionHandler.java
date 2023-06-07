@@ -1,8 +1,8 @@
 package com.example.student.Controller.handler;
 
-import com.example.student.exception.Classes.ClassesNameNotFoundException;
-import com.example.student.exception.Classes.ClassesExistException;
-import com.example.student.exception.Classes.ClassesNotFoundException;
+import com.example.student.Controller.exception.Classes.ClassesNameNotFoundException;
+import com.example.student.Controller.exception.Classes.ClassesExistException;
+import com.example.student.Controller.exception.Classes.ClassesNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
