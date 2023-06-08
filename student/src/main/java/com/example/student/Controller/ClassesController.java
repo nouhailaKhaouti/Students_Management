@@ -1,6 +1,6 @@
 package com.example.student.Controller;
-import com.example.student.Dto.ClassesDto;
-import com.example.student.Dto.ClassesGetDto;
+import com.example.student.Dto.Classes.ClassesDto;
+import com.example.student.Dto.Classes.ClassesGetDto;
 import com.example.student.Service.facade.ClassesService;
 import com.example.student.model.Classes;
 import lombok.AllArgsConstructor;
@@ -10,16 +10,11 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/classes")
@@ -38,7 +33,7 @@ public class ClassesController {
         if(classes == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Classes is null");
         Classes savedClasses = classesService.create(classes);
-        ClassesDto savedDtoClasses=modelMapper.map(savedClasses, ClassesDto.class);
+        ClassesGetDto savedDtoClasses=modelMapper.map(savedClasses, ClassesGetDto.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedDtoClasses);
     }
 

@@ -18,6 +18,5 @@ public class Matiere {
     private long id;
     private String label;
     @OneToMany
-    @JsonManagedReference
     private List<Notes> notes;
 }

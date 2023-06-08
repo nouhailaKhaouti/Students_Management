@@ -1,17 +1,15 @@
-package com.example.student.Dto;
+package com.example.student.Dto.Student;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.example.student.Dto.Classes.ClassesDto;
 import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotBlank;
-import java.util.Set;
 
 @Data
 public class StudentDto {
     @NotNull
-    private String CodeM;
+    private String codeM;
 
    @NotBlank(message = "First name must be filled")
     private String firstName;

@@ -1,10 +1,8 @@
-package com.example.student.Dto;
+package com.example.student.Dto.Classes;
 
+import com.example.student.Dto.Student.StudentGetDto;
 import lombok.Data;
-import org.antlr.v4.runtime.misc.NotNull;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Data

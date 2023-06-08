@@ -1,6 +1,6 @@
 package com.example.student.Convert;
 
-import com.example.student.Dto.StudentDto;
+import com.example.student.Dto.Student.StudentDto;
 import com.example.student.model.Student;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
