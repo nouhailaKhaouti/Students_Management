@@ -17,9 +17,11 @@ public class Notes {
     private long id;
     @ManyToOne
     @JoinColumn(name = "matiere_id")
+    @JsonBackReference
     private Matiere matiere;
     private Double note;
     @ManyToOne
     @JoinColumn(name = "student_id")
+    @JsonBackReference
     private Student student;
 }

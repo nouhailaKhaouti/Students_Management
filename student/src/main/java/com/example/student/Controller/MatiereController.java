@@ -35,6 +35,7 @@ public class MatiereController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Matiere is null");
         Matiere savedMatiere = matiereService.create(matiere);
         MatiereGetDto matiereS=modelMapper.map(savedMatiere,MatiereGetDto.class);
+        System.out.print(matiereS);
         return ResponseEntity.status(HttpStatus.CREATED).body(matiereS);
     }
 

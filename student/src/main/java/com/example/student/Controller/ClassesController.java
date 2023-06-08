@@ -1,8 +1,10 @@
 package com.example.student.Controller;
 import com.example.student.Dto.Classes.ClassesDto;
 import com.example.student.Dto.Classes.ClassesGetDto;
+import com.example.student.Dto.Student.StudentGetDto;
 import com.example.student.Service.facade.ClassesService;
 import com.example.student.model.Classes;
+import com.example.student.model.Student;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/classes")
@@ -22,10 +25,24 @@ import java.util.Optional;
 @Slf4j
 public class ClassesController {
 
-    @Autowired
-    private ModelMapper modelMapper;
     final ClassesService classesService;
+    final ModelMapper modelMapper;
+    @Autowired
+    public ClassesController(ModelMapper modelMapper, ClassesService classesService) {
+        this.modelMapper = modelMapper;
+        this.classesService = classesService;
+        configureStudentMapping(this.modelMapper);
+    }
 
+    private void configureStudentMapping(ModelMapper modelMapper) {
+        // Mapping for Classes
+        modelMapper.createTypeMap(Classes.class, ClassesGetDto.class)
+                .addMapping(Classes::getStudent, ClassesGetDto::setStudents);
+        // Mapping for Student
+        modelMapper.createTypeMap(Student.class, StudentGetDto.class)
+                .addMapping(Student::getFirstName, StudentGetDto::setFirstName)
+                .addMapping(Student::getLastName, StudentGetDto::setLastName);
+    }
     // create new classes
     @PostMapping (value = "/Add")
     public ResponseEntity<?> create(@RequestBody() ClassesDto classesDto) throws Exception {
@@ -38,7 +55,13 @@ public class ClassesController {
     }
 
     @GetMapping("/{Name}")
-    public ClassesGetDto findByName(@PathVariable String Name) throws Exception{
+    public ClassesGetDto findByName(@PathVariable String Name) throws Exception {
+        Classes classes=classesService.findByName(Name);
+        ClassesGetDto classesDto = modelMapper.map(classes, ClassesGetDto.class);
+        List<StudentGetDto> studentDtos = classes.getStudent().stream()
+                .map(student -> modelMapper.map(student, StudentGetDto.class))
+                .collect(Collectors.toList());
+        classesDto.setStudents(studentDtos);
         return modelMapper.map(classesService.findByName(Name), ClassesGetDto.class);
     }
     @PutMapping("/{id}")

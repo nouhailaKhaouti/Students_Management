@@ -1,9 +1,8 @@
 package com.example.student.model;
 
+import com.example.student.Dto.Student.StudentGetDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.annotation.Nullable;
 import lombok.*;
 import jakarta.persistence.*;
@@ -28,6 +27,7 @@ public class Classes {
     private Integer numberS;
     private double averageC=0.0;
     @OneToMany
+    @JsonManagedReference
     private List<Student> student;
 
 }

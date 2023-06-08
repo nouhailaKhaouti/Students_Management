@@ -1,5 +1,6 @@
 package com.example.student.model;
 
+import com.example.student.Dto.Notes.NotesGetWithStudentDto;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,5 +19,6 @@ public class Matiere {
     private long id;
     private String label;
     @OneToMany
+    @JsonManagedReference
     private List<Notes> notes;
 }

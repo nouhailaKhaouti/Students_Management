@@ -9,7 +9,6 @@ import javax.validation.constraints.Pattern;
 @Data
 public class ClassesDto {
 
-
     private  Long id;
     @NotNull
     @NotBlank(message = "First name must be filled")
