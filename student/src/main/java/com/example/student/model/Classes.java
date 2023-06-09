@@ -26,9 +26,32 @@ public class Classes {
     @NonNull
     private Integer numberS;
     private double averageC=0.0;
-    @OneToMany
+    @OneToMany(mappedBy = "classes")
     @JsonManagedReference
     private List<Student> student;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Classes{id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", numberS=").append(numberS);
+        sb.append(", averageC=").append(averageC);
 
+        if (student != null && !student.isEmpty()) {
+            sb.append(", students=[");
+            for (int i = 0; i < student.size(); i++) {
+                sb.append(student.get(i).getFirstName()).append(" ").append(student.get(i).getLastName());
+                if (i < student.size() - 1) {
+                    sb.append(", ");
+                }
+            }
+            sb.append("]");
+        } else {
+            sb.append(", students=[]");
+        }
+
+        sb.append("}");
+        return sb.toString();
+    }
 }
 

@@ -7,6 +7,7 @@ import com.example.student.Service.facade.NotesService;
 import com.example.student.model.Classes;
 import com.example.student.model.Notes;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/Notes")
 @AllArgsConstructor
+@Slf4j
 public class NotesController {
     @Autowired
     final ModelMapper modelMapper;

@@ -1,5 +1,6 @@
 package com.example.student.Service.Impl;
 
+import com.example.student.Controller.exception.Classes.ClassesNameNotFoundException;
 import com.example.student.Repository.ClassesRepository;
 import com.example.student.Service.facade.ClassesService;
 import com.example.student.Controller.exception.Classes.ClassesExistException;
@@ -29,19 +30,18 @@ public class ClassesServiceImpl implements ClassesService {
         // check if Classes exists
         Classes classesFromDB = classesRepository.findByName(classes.getName());
         if (classesFromDB == null) {
-            throw new ClassesNotFoundException(classes.getName());
+            throw new ClassesNameNotFoundException(classes.getName());
         }
         return classesRepository.save(classes);
     }
 
     @Override
-    public Classes findByName(String Name) throws Exception{
-
-        Classes studentFromDB = classesRepository.findByName(Name);
-        if(studentFromDB == null){
-            throw new ClassesNotFoundException(Name);
+    public Classes findByName(String Name) throws Exception {
+        Classes classes = classesRepository.findByName(Name);
+        if (classes == null) {
+            throw new ClassesNameNotFoundException(Name);
         }
-        return classesRepository.findByName(Name);
+        return classes;
     }
 
     @Override

@@ -62,7 +62,7 @@ public class ClassesController {
                 .map(student -> modelMapper.map(student, StudentGetDto.class))
                 .collect(Collectors.toList());
         classesDto.setStudents(studentDtos);
-        return modelMapper.map(classesService.findByName(Name), ClassesGetDto.class);
+        return classesDto;
     }
     @PutMapping("/{id}")
     public Optional<Classes> UpdateC(@PathVariable Long id , @RequestBody Classes updatedclasses) throws Exception {
