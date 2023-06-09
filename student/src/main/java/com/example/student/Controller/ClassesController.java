@@ -2,6 +2,7 @@ package com.example.student.Controller;
 import com.example.student.Dto.Classes.ClassesDto;
 import com.example.student.Dto.Classes.ClassesGetDto;
 import com.example.student.Dto.Student.StudentGetDto;
+import com.example.student.Dto.Student.StudentWithOutClassesDto;
 import com.example.student.Service.facade.ClassesService;
 import com.example.student.model.Classes;
 import com.example.student.model.Student;
@@ -39,9 +40,10 @@ public class ClassesController {
         modelMapper.createTypeMap(Classes.class, ClassesGetDto.class)
                 .addMapping(Classes::getStudent, ClassesGetDto::setStudents);
         // Mapping for Student
-        modelMapper.createTypeMap(Student.class, StudentGetDto.class)
-                .addMapping(Student::getFirstName, StudentGetDto::setFirstName)
-                .addMapping(Student::getLastName, StudentGetDto::setLastName);
+        modelMapper.createTypeMap(Student.class, StudentWithOutClassesDto.class)
+                .addMapping(Student::getFirstName, StudentWithOutClassesDto::setFirstName)
+                .addMapping(Student::getLastName, StudentWithOutClassesDto::setLastName)
+                .addMapping(Student::getCodeM, StudentWithOutClassesDto::setCodeM);
     }
     // create new classes
     @PostMapping (value = "/Add")
@@ -56,10 +58,13 @@ public class ClassesController {
 
     @GetMapping("/{Name}")
     public ClassesGetDto findByName(@PathVariable String Name) throws Exception {
-        Classes classes=classesService.findByName(Name);
+        Classes classes = classesService.findByName(Name);
         ClassesGetDto classesDto = modelMapper.map(classes, ClassesGetDto.class);
-        List<StudentGetDto> studentDtos = classes.getStudent().stream()
-                .map(student -> modelMapper.map(student, StudentGetDto.class))
+        List<StudentWithOutClassesDto> studentDtos = classes.getStudent().stream()
+                .map(student -> {
+                    StudentWithOutClassesDto studentDto = modelMapper.map(student, StudentWithOutClassesDto.class);
+                    return studentDto;
+                })
                 .collect(Collectors.toList());
         classesDto.setStudents(studentDtos);
         return classesDto;

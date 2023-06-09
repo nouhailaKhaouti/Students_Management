@@ -1,11 +1,15 @@
 package com.example.student.Controller;
 
 import com.example.student.Convert.StudentConvert;
+import com.example.student.Dto.Classes.ClassesGetDto;
+import com.example.student.Dto.Notes.NotesGetWithMatiereOnlyDto;
 import com.example.student.Dto.Student.StudentDto;
 import com.example.student.Dto.Student.StudentGetDto;
 import com.example.student.Service.facade.ClassesService;
 import com.example.student.Service.facade.StudentService;
+import com.example.student.model.Classes;
 import com.example.student.model.Matiere;
+import com.example.student.model.Notes;
 import com.example.student.model.Student;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +24,7 @@ import javax.validation.constraints.Null;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -27,11 +32,9 @@ import java.util.Optional;
 @AllArgsConstructor
 @Slf4j
 public class StudentController {
-    @Autowired
-    private ModelMapper modelMapper;
     final StudentService studentService;
-    final ClassesService classesService;
-    final StudentConvert studentConvert;
+    final ModelMapper modelMapper;
+
     // create new student
     @PostMapping("/saveStudent")
     public ResponseEntity<?> create(@RequestBody StudentDto studentDto) throws Exception {
@@ -68,7 +71,11 @@ public class StudentController {
 
         if (student != null) {
             StudentGetDto studentDto = modelMapper.map(student, StudentGetDto.class);
-            return ResponseEntity.ok(studentDto);
+            List<NotesGetWithMatiereOnlyDto> NotesDtos = student.getNotes().stream()
+                    .map(notes -> modelMapper.map(notes, NotesGetWithMatiereOnlyDto.class))
+                    .collect(Collectors.toList());
+            studentDto.setNotes(NotesDtos);
+            return ResponseEntity.ok(NotesDtos);
         } else {
             return ResponseEntity.notFound().build();
         }
