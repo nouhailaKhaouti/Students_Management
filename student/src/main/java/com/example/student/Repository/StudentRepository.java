@@ -12,6 +12,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     public Student findByCodeM(String codeM);
     public List<Student> findByClassesName(String name);
-    @Query("SELECT s FROM Student s JOIN FETCH s.notes WHERE s.id = :id")
+    @Query("SELECT s FROM Student s LEFT JOIN FETCH s.notes WHERE s.id = :id")
     Optional<Student> findStudentByIdWithNotes(@Param("id") Long id);
 }

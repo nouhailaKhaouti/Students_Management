@@ -64,14 +64,16 @@ public class StudentController {
     @GetMapping("/All/{id}")
     public ResponseEntity<?> getStudentWithNotes(@PathVariable Long id) throws Exception {
         Optional<Student> studentOptional = studentService.findStudentByIdWithNotes(id);
-        StudentGetDto student=modelMapper.map(studentOptional, StudentGetDto.class);
-        if (student!= null) {
-            StudentGetDto studentS = student;
-            return ResponseEntity.ok(studentS);
+        Student student = studentOptional.orElse(null); // Extract the Student from Optional
+
+        if (student != null) {
+            StudentGetDto studentDto = modelMapper.map(student, StudentGetDto.class);
+            return ResponseEntity.ok(studentDto);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
     @GetMapping("/")
     public List<StudentGetDto> findAll() {
         List<Student> studentList = studentService.findAll();

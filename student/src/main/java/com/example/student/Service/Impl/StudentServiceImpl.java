@@ -18,7 +18,6 @@ public class StudentServiceImpl implements StudentService {
     final StudentRepository studentRepository;
     @Autowired
     private ClassesService classesService;
-
     @Override
     public Student create(Student student) throws Exception{
         Student studentComingFromDB = studentRepository.findByCodeM(student.getCodeM());
@@ -27,7 +26,6 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentRepository.save(student);
     }
-
     @Override
     public Student update(Student student) throws Exception {
         // check if Student exists
@@ -57,12 +55,14 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> findByClassesName(String Name) {
+
         return studentRepository.findByClassesName(Name);
     }
 
     @Override
     public Optional<Student> findStudentByIdWithNotes(Long id) {
-        return studentRepository.findStudentByIdWithNotes(id);
+        Optional<Student> student=studentRepository.findStudentByIdWithNotes(id);
+        return student;
     }
 
     @Override
