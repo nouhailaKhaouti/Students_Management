@@ -29,7 +29,7 @@ public class Student {
     @JoinColumn(name = "classes_id")
     @JsonBackReference
     private Classes classes;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JsonManagedReference
     private List<Notes> notes;
 }

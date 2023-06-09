@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class StudentDto {
+    private Long id;
     @NotNull
     private String codeM;
 
