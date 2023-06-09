@@ -75,7 +75,7 @@ public class StudentController {
                     .map(notes -> modelMapper.map(notes, NotesGetWithMatiereOnlyDto.class))
                     .collect(Collectors.toList());
             studentDto.setNotes(NotesDtos);
-            return ResponseEntity.ok(NotesDtos);
+            return ResponseEntity.ok(studentDto);
         } else {
             return ResponseEntity.notFound().build();
         }

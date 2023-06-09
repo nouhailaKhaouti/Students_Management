@@ -1,6 +1,7 @@
 package com.example.student.Dto.Student;
 
 import com.example.student.Dto.Classes.ClassesGetDto;
+import com.example.student.Dto.Classes.ClassesWithOutStudentsListDto;
 import com.example.student.Dto.Notes.NotesGetWithMatiereOnlyDto;
 import com.example.student.Dto.Notes.NotesGetWithStudentDto;
 import lombok.Data;
@@ -14,6 +15,6 @@ public class StudentGetDto {
     private String codeM;
     private String firstName;
     private String lastName;
-    private ClassesGetDto classes;
+    private ClassesWithOutStudentsListDto classes;
     private List<NotesGetWithMatiereOnlyDto> notes;
 }
