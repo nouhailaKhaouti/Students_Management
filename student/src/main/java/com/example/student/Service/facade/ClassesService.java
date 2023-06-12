@@ -14,5 +14,5 @@ public interface ClassesService {
     Classes findByName(String Name) throws Exception;
     List<Classes> findAll();
 
-    Optional<Classes> classesbyId(UUID id);
+    Optional<Classes> classesbyId(String id);
 }

@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface StudentRepository extends JpaRepository<Student, UUID> {
+public interface StudentRepository extends JpaRepository<Student, String> {
 
     public Student findByCodeM(String codeM);
     public List<Student> findByClassesName(String name);
     @Query("SELECT s FROM Student s LEFT JOIN FETCH s.notes WHERE s.id = :id")
-    Optional<Student> findStudentByIdWithNotes(@Param("id") UUID id);
+    Optional<Student> findStudentByIdWithNotes(@Param("id") String id);
 }

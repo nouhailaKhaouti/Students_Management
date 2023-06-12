@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 public class ClassesDto {
 
-    private UUID id;
+    private String id;
     @NotNull
     @NotBlank(message = "First name must be filled")
     @Pattern(regexp = "^(?!\\s*$).+", message = "First name must not be blank or contain only spaces")

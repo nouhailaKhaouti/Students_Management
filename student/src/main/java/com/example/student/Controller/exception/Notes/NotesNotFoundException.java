@@ -4,16 +4,16 @@ import java.util.UUID;
 
 public class NotesNotFoundException extends Exception{
 
-    UUID id;
-    public NotesNotFoundException(UUID id){
+    String id;
+    public NotesNotFoundException(String id){
         this.id=id;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id= id;
     }
 }

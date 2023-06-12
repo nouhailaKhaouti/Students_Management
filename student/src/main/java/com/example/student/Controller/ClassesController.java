@@ -54,7 +54,7 @@ public class ClassesController {
         return classesDto;
     }
     @PutMapping("/{id}")
-    public Optional<Classes> UpdateC(@PathVariable UUID id , @RequestBody Classes updatedclasses) throws Exception {
+    public Optional<Classes> UpdateC(@PathVariable String id , @RequestBody Classes updatedclasses) throws Exception {
         Optional<Classes> classes =  classesService.classesbyId(id);
         if (classes.isPresent()) {
             Classes existingClasses = classes.get();

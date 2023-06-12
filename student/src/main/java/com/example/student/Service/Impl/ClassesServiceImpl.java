@@ -18,12 +18,13 @@ public class ClassesServiceImpl implements ClassesService {
 
     final ClassesRepository classesRepository;
     @Override
-    public Classes create(Classes student) throws Exception{
-        Classes studentComingFromDB = classesRepository.findByName(student.getName());
-        if(studentComingFromDB != null){
-            throw new ClassesExistException(student.getName());
+    public Classes create(Classes classes) throws Exception{
+        Classes classesComingFromDB = classesRepository.findByName(classes.getName());
+        if(classesComingFromDB != null){
+            throw new ClassesExistException(classes.getName());
         }
-        return classesRepository.save(student);
+        classes.setId(UUID.randomUUID().toString());
+        return classesRepository.save(classes);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class ClassesServiceImpl implements ClassesService {
     }
 
     @Override
-    public Optional<Classes> classesbyId(UUID id){
+    public Optional<Classes> classesbyId(String id){
         return classesRepository.findById(id);
     }
 }

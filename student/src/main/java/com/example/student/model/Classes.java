@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Classes {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id;
 
     @NonNull
     @NotBlank(message = "First name must be filled")

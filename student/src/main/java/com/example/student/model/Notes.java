@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id;
     @ManyToOne
     @JoinColumn(name = "matiere_id")
     @JsonBackReference

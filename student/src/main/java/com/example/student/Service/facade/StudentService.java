@@ -12,6 +12,6 @@ public interface StudentService {
     Student findByCodeM(String CodeM) throws Exception;
     List<Student> findAll();
     List<Student> findByClassesName(String name) throws Exception;
-    Optional<Student> findStudentByIdWithNotes(UUID id) throws Exception;
-    Boolean DeleteStudent(UUID id) throws Exception;
+    Optional<Student> findStudentByIdWithNotes(String id) throws Exception;
+    Boolean DeleteStudent(String id) throws Exception;
 }

@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Data
 public class StudentDto {
-    private UUID id;
+    private String id;
     @NotNull
     private String codeM;
 

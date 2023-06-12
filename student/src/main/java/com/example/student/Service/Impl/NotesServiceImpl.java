@@ -22,6 +22,7 @@ public class NotesServiceImpl implements NotesService {
         if(notesComingFromDB .isPresent()){
             throw new NotesExistException(notes.getId());
         }
+        notes.setId(UUID.randomUUID().toString());
         return notesRepository.save(notes);
     }
 
@@ -40,7 +41,7 @@ public class NotesServiceImpl implements NotesService {
     }
 
     @Override
-    public Optional<Notes> findById(UUID id){
+    public Optional<Notes> findById(String id){
         return notesRepository.findById(id);
     }
 

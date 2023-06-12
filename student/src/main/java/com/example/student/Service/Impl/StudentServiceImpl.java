@@ -61,13 +61,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> findStudentByIdWithNotes(UUID id) {
+    public Optional<Student> findStudentByIdWithNotes(String id) {
         Optional<Student> student=studentRepository.findStudentByIdWithNotes(id);
         return student;
     }
 
     @Override
-    public Boolean DeleteStudent(UUID id){
+    public Boolean DeleteStudent(String id){
         Optional<Student> studentO = studentRepository.findById(id);
 
         if (studentO.isPresent()) {

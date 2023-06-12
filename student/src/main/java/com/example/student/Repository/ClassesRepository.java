@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.UUID;
 
-public interface ClassesRepository extends JpaRepository<Classes, UUID> {
+public interface ClassesRepository extends JpaRepository<Classes, String> {
 
     @Query("SELECT c FROM Classes c LEFT JOIN FETCH c.student s WHERE c.name = :name")
     Classes findByName(String name);

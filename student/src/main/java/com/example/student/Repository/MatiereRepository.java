@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface MatiereRepository extends JpaRepository<Matiere, UUID> {
+public interface MatiereRepository extends JpaRepository<Matiere, String> {
     Matiere findByLabel(String label);
 }

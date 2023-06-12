@@ -39,11 +39,11 @@ public class NotesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(notesS);
     }
     @GetMapping("/{Id}")
-    public Optional<Notes> findById(@PathVariable UUID Id) throws Exception{
+    public Optional<Notes> findById(@PathVariable String Id) throws Exception{
         return notesService.findById(Id);
     }
     @PutMapping("/{id}")
-    public Optional<Notes> UpdateC(@PathVariable UUID id , @RequestBody Notes updatednotes) throws Exception {
+    public Optional<Notes> UpdateC(@PathVariable String id , @RequestBody Notes updatednotes) throws Exception {
         Optional<Notes> notes =  notesService.findById(id);
         if (notes.isPresent()) {
             Notes existingNotes = notes.get();
