@@ -4,6 +4,7 @@ import com.example.student.model.Notes;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface NotesService {
 
@@ -11,6 +12,6 @@ public interface NotesService {
     Notes update(Notes note) throws Exception;
     List<Notes> findByStudentCodeM(String CodeM) throws Exception;
     List<Notes> findByMatiereLabel(String label) throws Exception;
-    Optional<Notes> findById(Long Id) throws Exception;
+    Optional<Notes> findById(UUID Id) throws Exception;
     List<Notes> findAll();
 }

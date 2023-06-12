@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @org.springframework.stereotype.Service
 @AllArgsConstructor
@@ -50,7 +51,7 @@ public class ClassesServiceImpl implements ClassesService {
     }
 
     @Override
-    public Optional<Classes> classesbyId(Long id){
+    public Optional<Classes> classesbyId(UUID id){
         return classesRepository.findById(id);
     }
 }

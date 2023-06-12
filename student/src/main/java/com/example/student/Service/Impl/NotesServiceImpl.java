@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @org.springframework.stereotype.Service
 @AllArgsConstructor
@@ -39,7 +40,7 @@ public class NotesServiceImpl implements NotesService {
     }
 
     @Override
-    public Optional<Notes> findById(Long id){
+    public Optional<Notes> findById(UUID id){
         return notesRepository.findById(id);
     }
 

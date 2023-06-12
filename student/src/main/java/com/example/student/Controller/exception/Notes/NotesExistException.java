@@ -1,16 +1,19 @@
 package com.example.student.Controller.exception.Notes;
 
+import java.util.UUID;
+
 public class NotesExistException extends Exception {
-    Long id;
-    public NotesExistException(Long id){
+    UUID id;
+    public NotesExistException(UUID id){
+
         this.id=id;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id= id;
     }
 }

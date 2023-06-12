@@ -4,6 +4,8 @@ import com.example.student.model.Classes;
 import com.example.student.model.Matiere;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MatiereRepository extends JpaRepository<Matiere, Long> {
+import java.util.UUID;
+
+public interface MatiereRepository extends JpaRepository<Matiere, UUID> {
     Matiere findByLabel(String label);
 }

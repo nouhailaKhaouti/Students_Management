@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -53,7 +54,7 @@ public class ClassesController {
         return classesDto;
     }
     @PutMapping("/{id}")
-    public Optional<Classes> UpdateC(@PathVariable Long id , @RequestBody Classes updatedclasses) throws Exception {
+    public Optional<Classes> UpdateC(@PathVariable UUID id , @RequestBody Classes updatedclasses) throws Exception {
         Optional<Classes> classes =  classesService.classesbyId(id);
         if (classes.isPresent()) {
             Classes existingClasses = classes.get();

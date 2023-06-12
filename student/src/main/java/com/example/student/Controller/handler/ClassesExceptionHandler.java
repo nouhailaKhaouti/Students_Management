@@ -16,7 +16,7 @@ public class ClassesExceptionHandler {
 
     @ExceptionHandler(value = ClassesNotFoundException.class)
     public ResponseEntity<?> handleClassesNotFoundException(ClassesNotFoundException exception) {
-        return ResponseEntity.status(NOT_FOUND).body("Classes with " + exception.getClasses_id() + " is nowhere to be found");
+        return ResponseEntity.status(NOT_FOUND).body("Classes with " + exception.getName() + " is nowhere to be found");
     }
 
     @ExceptionHandler(value = ClassesExistException.class)

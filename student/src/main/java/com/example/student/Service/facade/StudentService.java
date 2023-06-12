@@ -3,6 +3,7 @@ package com.example.student.Service.facade;
 import com.example.student.model.Student;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface StudentService {
 
@@ -11,6 +12,6 @@ public interface StudentService {
     Student findByCodeM(String CodeM) throws Exception;
     List<Student> findAll();
     List<Student> findByClassesName(String name) throws Exception;
-    Optional<Student> findStudentByIdWithNotes(Long id) throws Exception;
-    Boolean DeleteStudent(Long id) throws Exception;
+    Optional<Student> findStudentByIdWithNotes(UUID id) throws Exception;
+    Boolean DeleteStudent(UUID id) throws Exception;
 }

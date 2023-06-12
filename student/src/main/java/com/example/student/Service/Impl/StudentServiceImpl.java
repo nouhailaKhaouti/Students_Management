@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -60,13 +61,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> findStudentByIdWithNotes(Long id) {
+    public Optional<Student> findStudentByIdWithNotes(UUID id) {
         Optional<Student> student=studentRepository.findStudentByIdWithNotes(id);
         return student;
     }
 
     @Override
-    public Boolean DeleteStudent(Long id){
+    public Boolean DeleteStudent(UUID id){
         Optional<Student> studentO = studentRepository.findById(id);
 
         if (studentO.isPresent()) {

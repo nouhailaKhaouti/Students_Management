@@ -5,10 +5,11 @@ import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import javax.validation.constraints.NotBlank;
+import java.util.UUID;
 
 @Data
 public class StudentDto {
-    private Long id;
+    private UUID id;
     @NotNull
     private String codeM;
 

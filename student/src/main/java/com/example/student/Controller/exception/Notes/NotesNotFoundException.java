@@ -1,17 +1,19 @@
 package com.example.student.Controller.exception.Notes;
 
+import java.util.UUID;
+
 public class NotesNotFoundException extends Exception{
 
-    Long id;
-    public NotesNotFoundException(Long id){
+    UUID id;
+    public NotesNotFoundException(UUID id){
         this.id=id;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id= id;
     }
 }

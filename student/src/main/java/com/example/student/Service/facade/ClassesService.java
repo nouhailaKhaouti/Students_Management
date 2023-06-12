@@ -5,6 +5,7 @@ import com.example.student.model.Student;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface ClassesService {
 
@@ -13,5 +14,5 @@ public interface ClassesService {
     Classes findByName(String Name) throws Exception;
     List<Classes> findAll();
 
-    Optional<Classes> classesbyId(Long id);
+    Optional<Classes> classesbyId(UUID id);
 }

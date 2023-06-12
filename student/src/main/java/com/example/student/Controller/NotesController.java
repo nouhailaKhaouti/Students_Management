@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/Notes")
 @AllArgsConstructor
@@ -37,11 +39,11 @@ public class NotesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(notesS);
     }
     @GetMapping("/{Id}")
-    public Optional<Notes> findById(@PathVariable Long Id) throws Exception{
+    public Optional<Notes> findById(@PathVariable UUID Id) throws Exception{
         return notesService.findById(Id);
     }
     @PutMapping("/{id}")
-    public Optional<Notes> UpdateC(@PathVariable Long id , @RequestBody Notes updatednotes) throws Exception {
+    public Optional<Notes> UpdateC(@PathVariable UUID id , @RequestBody Notes updatednotes) throws Exception {
         Optional<Notes> notes =  notesService.findById(id);
         if (notes.isPresent()) {
             Notes existingNotes = notes.get();

@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -17,8 +18,9 @@ import java.util.List;
 @AllArgsConstructor
 public class Classes {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
     @NonNull
     @NotBlank(message = "First name must be filled")
     @Pattern(regexp = "^(?!\\s*$).+", message = "First name must not be blank or contain only spaces")

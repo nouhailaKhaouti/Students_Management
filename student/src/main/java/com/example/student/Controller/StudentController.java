@@ -24,6 +24,7 @@ import javax.validation.constraints.Null;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -65,7 +66,7 @@ public class StudentController {
     }
 
     @GetMapping("/All/{id}")
-    public ResponseEntity<?> getStudentWithNotes(@PathVariable Long id) throws Exception {
+    public ResponseEntity<?> getStudentWithNotes(@PathVariable UUID id) throws Exception {
         Optional<Student> studentOptional = studentService.findStudentByIdWithNotes(id);
         Student student = studentOptional.orElse(null); // Extract the Student from Optional
 
@@ -94,7 +95,7 @@ public class StudentController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public String DeleteS(@PathVariable Long id) throws Exception {
+    public String DeleteS(@PathVariable UUID id) throws Exception {
         if(studentService.DeleteStudent(id)){
             return "Student deleted successfully";
         } else {

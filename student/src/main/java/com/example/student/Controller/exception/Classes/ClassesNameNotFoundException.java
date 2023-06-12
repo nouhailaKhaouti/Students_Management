@@ -8,11 +8,11 @@ public class ClassesNameNotFoundException extends  Exception{
         this.name=name;
     }
 
-    public String getClasses_id() {
+    public String getName() {
         return name;
     }
 
-    public void setClasses_id(String name) {
+    public void setName(String name) {
         this.name= name;
     }
 }
