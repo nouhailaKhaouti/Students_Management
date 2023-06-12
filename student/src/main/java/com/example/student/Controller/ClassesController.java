@@ -28,23 +28,6 @@ public class ClassesController {
 
     final ClassesService classesService;
     final ModelMapper modelMapper;
-    @Autowired
-    public ClassesController(ModelMapper modelMapper, ClassesService classesService) {
-        this.modelMapper = modelMapper;
-        this.classesService = classesService;
-        configureStudentMapping(this.modelMapper);
-    }
-
-    private void configureStudentMapping(ModelMapper modelMapper) {
-        // Mapping for Classes
-        modelMapper.createTypeMap(Classes.class, ClassesGetDto.class)
-                .addMapping(Classes::getStudent, ClassesGetDto::setStudents);
-        // Mapping for Student
-        modelMapper.createTypeMap(Student.class, StudentWithOutClassesDto.class)
-                .addMapping(Student::getFirstName, StudentWithOutClassesDto::setFirstName)
-                .addMapping(Student::getLastName, StudentWithOutClassesDto::setLastName)
-                .addMapping(Student::getCodeM, StudentWithOutClassesDto::setCodeM);
-    }
     // create new classes
     @PostMapping (value = "/Add")
     public ResponseEntity<?> create(@RequestBody() ClassesDto classesDto) throws Exception {
