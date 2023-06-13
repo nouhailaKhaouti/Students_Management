@@ -8,6 +8,7 @@ import com.example.student.model.Matiere;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 @org.springframework.stereotype.Service
 @AllArgsConstructor
@@ -25,7 +26,7 @@ public class MatiereServiceImpl implements MatiereService {
     @Override
     public Matiere update(Matiere matiere) throws Exception {
         // check if Matiere exists
-        Matiere matiereFromDB = matiereRepository.findByLabel(matiere.getLabel());
+        Optional<Matiere> matiereFromDB = matiereRepository.findById(matiere.getId());
         if (matiereFromDB == null) {
             try {
                 throw new MatiereNotFoundException(matiere.getLabel());

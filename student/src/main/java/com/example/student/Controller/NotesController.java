@@ -39,8 +39,9 @@ public class NotesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(notesS);
     }
     @GetMapping("/{Id}")
-    public Optional<Notes> findById(@PathVariable String Id) throws Exception{
-        return notesService.findById(Id);
+    public Optional<NotesGetWithStudentDto> findById(@PathVariable String Id) throws Exception{
+        NotesGetWithStudentDto notes=modelMapper.map(notesService.findById(Id),NotesGetWithStudentDto.class);
+        return Optional.ofNullable(notes);
     }
     @PutMapping("/{id}")
     public Optional<Notes> UpdateC(@PathVariable String id , @RequestBody Notes updatednotes) throws Exception {

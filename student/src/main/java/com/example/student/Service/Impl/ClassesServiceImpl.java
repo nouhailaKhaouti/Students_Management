@@ -4,7 +4,6 @@ import com.example.student.Controller.exception.Classes.ClassesNameNotFoundExcep
 import com.example.student.Repository.ClassesRepository;
 import com.example.student.Service.facade.ClassesService;
 import com.example.student.Controller.exception.Classes.ClassesExistException;
-import com.example.student.Controller.exception.Classes.ClassesNotFoundException;
 import com.example.student.model.Classes;
 import lombok.AllArgsConstructor;
 
@@ -30,7 +29,7 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     public Classes update(Classes classes) throws Exception {
         // check if Classes exists
-        Classes classesFromDB = classesRepository.findByName(classes.getName());
+        Optional<Classes> classesFromDB = classesRepository.findById(classes.getId());
         if (classesFromDB == null) {
             throw new ClassesNameNotFoundException(classes.getName());
         }
@@ -45,14 +44,18 @@ public class ClassesServiceImpl implements ClassesService {
         }
         return classes;
     }
+    @Override
+    public Optional<Classes> findById(String id) throws Exception {
+        Optional<Classes> classes = classesRepository.findById(id);
+        if (classes == null) {
+            throw new ClassesNameNotFoundException(id);
+        }
+        return classes;
+    }
 
     @Override
     public List<Classes> findAll() {
         return classesRepository.findAll();
     }
 
-    @Override
-    public Optional<Classes> classesbyId(String id){
-        return classesRepository.findById(id);
-    }
 }

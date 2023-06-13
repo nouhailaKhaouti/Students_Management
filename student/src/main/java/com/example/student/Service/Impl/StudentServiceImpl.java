@@ -17,8 +17,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class StudentServiceImpl implements StudentService {
     final StudentRepository studentRepository;
-    @Autowired
-    private ClassesService classesService;
     @Override
     public Student create(Student student) throws Exception{
         Student studentComingFromDB = studentRepository.findByCodeM(student.getCodeM());

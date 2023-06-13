@@ -2,7 +2,9 @@ package com.example.student.Controller;
 
 import com.example.student.Convert.StudentConvert;
 import com.example.student.Dto.Classes.ClassesGetDto;
+import com.example.student.Dto.Matiere.MatiereWithNotesDto;
 import com.example.student.Dto.Notes.NotesGetWithMatiereOnlyDto;
+import com.example.student.Dto.Notes.NotesGetWithStudentDto;
 import com.example.student.Dto.Student.StudentDto;
 import com.example.student.Dto.Student.StudentGetDto;
 import com.example.student.Service.facade.ClassesService;
@@ -49,9 +51,17 @@ public class StudentController {
     }
 
     @GetMapping("/{CodeM}")
-    public Student findByCodeM(@PathVariable String CodeM) throws Exception{
+    public StudentGetDto findByCodeM(@PathVariable String CodeM) throws Exception{
         Student student =studentService.findByCodeM(CodeM);
-        return student;
+        StudentGetDto studentDto=modelMapper.map(student,StudentGetDto.class);
+        List<NotesGetWithMatiereOnlyDto> notesDtos = student.getNotes().stream()
+                .map(notes -> {
+                    NotesGetWithMatiereOnlyDto notesDto = modelMapper.map(notes, NotesGetWithMatiereOnlyDto.class);
+                    return notesDto;
+                })
+                .collect(Collectors.toList());
+        studentDto.setNotes(notesDtos);
+        return studentDto;
     }
 
     @PutMapping("/")
@@ -86,7 +96,17 @@ public class StudentController {
     public List<StudentGetDto> findAll() {
         List<Student> studentList = studentService.findAll();
         Type listType = new TypeToken<List<StudentGetDto>>() {}.getType();
-        return modelMapper.map(studentList, listType);
+        List<StudentGetDto> studentDtoList = modelMapper.map(studentList, listType);
+        for (StudentGetDto studentDto : studentDtoList) {
+            List<NotesGetWithMatiereOnlyDto> notesDtos = studentDto.getNotes().stream()
+                    .map(notes -> {
+                        NotesGetWithMatiereOnlyDto notesDto = modelMapper.map(notes, NotesGetWithMatiereOnlyDto.class);
+                        return notesDto;
+                    })
+                    .collect(Collectors.toList());
+            studentDto.setNotes(notesDtos);
+        }
+        return studentDtoList;
     }
 
     @GetMapping("/Name/{Name}")

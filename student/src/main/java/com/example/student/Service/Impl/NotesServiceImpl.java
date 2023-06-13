@@ -14,10 +14,12 @@ import java.util.UUID;
 @org.springframework.stereotype.Service
 @AllArgsConstructor
 public class NotesServiceImpl implements NotesService {
-
     final NotesRepository notesRepository;
     @Override
     public Notes create(Notes notes) throws Exception{
+        if (notes.getId() != null) {
+            throw new NotesExistException(notes.getId());
+        }
         Optional<Notes> notesComingFromDB = notesRepository.findById(notes.getId());
         if(notesComingFromDB .isPresent()){
             throw new NotesExistException(notes.getId());
