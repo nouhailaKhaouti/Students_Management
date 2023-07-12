@@ -1,17 +1,14 @@
 package com.example.student.Service.Impl;
 import com.example.student.Repository.StudentRepository;
-import com.example.student.Service.facade.ClassesService;
-import com.example.student.Service.facade.StudentService;
-import com.example.student.Controller.exception.Student.StudentExistException;
-import com.example.student.Controller.exception.Student.StudentNotFoundException;
-import com.example.student.model.Student;
+import com.example.student.Service.Facade.StudentService;
+import com.example.student.Controller.Exception.Student.StudentExistException;
+import com.example.student.Controller.Exception.Student.StudentNotFoundException;
+import com.example.student.Model.Student;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @AllArgsConstructor

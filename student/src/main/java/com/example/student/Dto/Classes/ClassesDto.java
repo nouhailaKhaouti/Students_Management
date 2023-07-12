@@ -9,7 +9,6 @@ import java.util.UUID;
 
 @Data
 public class ClassesDto {
-
     private String id;
     @NotNull
     @NotBlank(message = "First name must be filled")
@@ -17,5 +16,4 @@ public class ClassesDto {
     private String name;
     @NotBlank(message = "Number of Student must be filled")
     private Integer numberS;
-
 }

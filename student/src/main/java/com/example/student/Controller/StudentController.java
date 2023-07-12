@@ -1,32 +1,21 @@
 package com.example.student.Controller;
 
-import com.example.student.Convert.StudentConvert;
-import com.example.student.Dto.Classes.ClassesGetDto;
-import com.example.student.Dto.Matiere.MatiereWithNotesDto;
 import com.example.student.Dto.Notes.NotesGetWithMatiereOnlyDto;
-import com.example.student.Dto.Notes.NotesGetWithStudentDto;
 import com.example.student.Dto.Student.StudentDto;
 import com.example.student.Dto.Student.StudentGetDto;
-import com.example.student.Service.facade.ClassesService;
-import com.example.student.Service.facade.StudentService;
-import com.example.student.model.Classes;
-import com.example.student.model.Matiere;
-import com.example.student.model.Notes;
-import com.example.student.model.Student;
+import com.example.student.Service.Facade.StudentService;
+import com.example.student.Model.Student;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Null;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 

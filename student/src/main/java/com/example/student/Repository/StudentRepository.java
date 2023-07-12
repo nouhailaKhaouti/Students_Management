@@ -1,13 +1,12 @@
 package com.example.student.Repository;
 
-import com.example.student.model.Student;
+import com.example.student.Model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface StudentRepository extends JpaRepository<Student, String> {
 

@@ -1,10 +1,10 @@
 package com.example.student.Service.Impl;
 
 import com.example.student.Repository.NotesRepository;
-import com.example.student.Service.facade.NotesService;
-import com.example.student.Controller.exception.Notes.NotesExistException;
-import com.example.student.Controller.exception.Notes.NotesNotFoundException;
-import com.example.student.model.Notes;
+import com.example.student.Service.Facade.NotesService;
+import com.example.student.Controller.Exception.Notes.NotesExistException;
+import com.example.student.Controller.Exception.Notes.NotesNotFoundException;
+import com.example.student.Model.Notes;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
